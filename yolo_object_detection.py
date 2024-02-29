@@ -44,6 +44,9 @@ def perform_object_detection(image_path, output_path):
                 confidences.append(float(confidence))
                 class_ids.append(class_id)
 
+                # increment object counter
+                object_counter += 1
+
     # Non-max suppression
     indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
 
@@ -60,6 +63,8 @@ def perform_object_detection(image_path, output_path):
 
     # Save annotated image
     cv2.imwrite(output_path, image)
+
+    # print object count
 
 # Call object detection function
 perform_object_detection("images/highway-traffic.jpg", "images/annotated-image.jpg")
