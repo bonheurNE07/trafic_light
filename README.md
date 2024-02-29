@@ -1,5 +1,3 @@
-"# trafic_light"
-
 # Traffic Object Detection with YOLO
 
 This project implements real-time object detection using the YOLO (You Only Look Once) algorithm. It detects various objects in traffic scenes captured by CCTV cameras at traffic junctions and calculates traffic density based on the detected objects.
