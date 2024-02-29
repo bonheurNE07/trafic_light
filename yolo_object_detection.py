@@ -18,6 +18,9 @@ def perform_object_detection(image_path, output_path):
     # Forward pass through the network
     outs = net.forward(output_layers)
 
+    # initialize object counter
+    object_count = 0
+
     # Showing informations on the screen
     class_ids = []
     confidences = []
@@ -45,7 +48,7 @@ def perform_object_detection(image_path, output_path):
                 class_ids.append(class_id)
 
                 # increment object counter
-                object_counter += 1
+                object_count += 1
 
     # Non-max suppression
     indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
@@ -65,6 +68,7 @@ def perform_object_detection(image_path, output_path):
     cv2.imwrite(output_path, image)
 
     # print object count
+    print(f"Number of objects detected: {object_count}")
 
 # Call object detection function
 perform_object_detection("images/highway-traffic.jpg", "images/annotated-image.jpg")
